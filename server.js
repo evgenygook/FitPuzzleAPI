@@ -9,6 +9,8 @@ const {
   getPlantById,
   updatePlantById,
 } = require("./controllers/plantController");
+const { getUserById } = require("./controllers/authController");
+const { getAllUsers } = require("./controllers/usertController");
 
 app.use(express.json());
 
@@ -20,13 +22,19 @@ app.get("/", (req, res) => {
 app.get("/user", (req, res) => {
   res.send("Hello user");
 });
-
+//=====Plants====
 app.get("/plants", getAllPlants);
 app.post("/plants", createPlant);
 app.delete("/plants/:id", deletePlant);
 app.get("/plants/:id", getPlantById);
 app.patch("/plants/:id", updatePlantById);
+//====User====
+//==auth==
+app.post("/user/register", registerUser);
+app.get("/user/:id", getUserById);
+app.get("/user", getAllUsers);
 
+//====port====
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

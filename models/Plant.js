@@ -5,6 +5,10 @@ const plant = new mongoose.Schema({
     type: String,
     required: true,
   },
+  growMethodSoil: {
+    type: boolean,
+    required: true,
+  },
   description: {
     type: String,
     required: true,

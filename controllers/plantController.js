@@ -14,7 +14,9 @@ exports.createPlant = async (req, res) => {
     const newPlant = new Plant(req.body);
     await newPlant.save();
     res.status(201).json(newPlant);
-  } catch (error) {console.log("somthing wrong in createPlant");
+  } catch (error) {
+    console.log("somthing wrong in createPlant");
+  }
 };
 
 exports.deletePlant = async (req, res) => {
@@ -25,7 +27,9 @@ exports.deletePlant = async (req, res) => {
     }
 
     res.status(200).json({ message: " deleted" });
-  } catch (error) {console.log("somthing wrong in deletePlant");}
+  } catch (error) {
+    console.log("somthing wrong in deletePlant");
+  }
 };
 
 exports.getPlantById = async (req, res) => {
