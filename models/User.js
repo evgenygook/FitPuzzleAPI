@@ -12,6 +12,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  nickname: {
+    type: String,
+    required: false,
+    unique: false,
+  },
 });
 
 userSchema.pre("save", async function () {
