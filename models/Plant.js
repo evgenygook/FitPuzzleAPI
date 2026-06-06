@@ -6,8 +6,8 @@ const plant = new mongoose.Schema({
     required: true,
   },
   growMethodSoil: {
-    type: boolean,
-    required: true,
+    type: Boolean,
+    default: true,
   },
   description: {
     type: String,
