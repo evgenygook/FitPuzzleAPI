@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
+
 exports.registerUser = async (req, res) => {
   try {
     const newUser = new User(req.body);
