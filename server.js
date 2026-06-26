@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = 3000;
+require("dotenv").config();
 const mongoose = require("mongoose");
 const {
   getAllPlants,
@@ -9,7 +10,7 @@ const {
   getPlantById,
   updatePlantById,
 } = require("./controllers/plantController");
-const { registerUser } = require("./controllers/authController");
+const { registerUser, loginUser } = require("./controllers/authController");
 const { getAllUsers, getUserById } = require("./controllers/userController");
 
 app.use(express.json());
@@ -26,8 +27,8 @@ app.delete("/plants/:id", deletePlant);
 app.get("/plants/:id", getPlantById);
 app.patch("/plants/:id", updatePlantById);
 //====User====
-//==register/auth==
 app.post("/user/register", registerUser);
+app.post("/user/login", loginUser);
 app.get("/user/:id", getUserById);
 app.get("/user", getAllUsers);
 
@@ -37,9 +38,7 @@ app.listen(PORT, () => {
 });
 
 mongoose
-  .connect(
-    "mongodb+srv://evgenygook_admin:tM5f43Lb!@fitpuzzleapi.jjr4elk.mongodb.net/fitpuzzle-api?appName=FitPuzzleAPI",
-  )
+  .connect(process.env.MONGODB_LINK)
   .then(() => {
     console.log("Connected to MongoDB");
   })
